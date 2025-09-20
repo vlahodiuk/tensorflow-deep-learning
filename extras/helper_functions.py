@@ -169,21 +169,22 @@ def plot_loss_curves(history):
   val_accuracy = history.history['val_accuracy']
 
   epochs = range(len(history.history['loss']))
-
+  
+  fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 5))
+  
   # Plot loss
-  plt.plot(epochs, loss, label='training_loss')
-  plt.plot(epochs, val_loss, label='val_loss')
-  plt.title('Loss')
-  plt.xlabel('Epochs')
-  plt.legend()
+  ax1.plot(epochs, loss, label="training_loss")
+  ax1.plot(epochs, val_loss, label="val_loss")
+  ax1.set_title("Loss")
+  ax1.xlabel('Epochs')
+  ax1.legend()
 
-  # Plot accuracy
-  plt.figure()
-  plt.plot(epochs, accuracy, label='training_accuracy')
-  plt.plot(epochs, val_accuracy, label='val_accuracy')
-  plt.title('Accuracy')
-  plt.xlabel('Epochs')
-  plt.legend();
+   # Plot accuracy
+  ax2.plot(epochs, accuracy, label="training_accuracy")
+  ax2.plot(epochs, val_accuracy, label="val_accuracy")
+  ax2.set_title('Accuracy')
+  ax2.xlabel('Epochs')
+  ax2.legend()
 
 def compare_historys(original_history, new_history, initial_epochs=5):
     """
